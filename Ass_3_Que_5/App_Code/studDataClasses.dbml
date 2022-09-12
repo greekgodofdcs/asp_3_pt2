@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Student_Managment_System" Class="studDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-K39OPM8\SQLEXPRESS;Initial Catalog=Student_Managment_System;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Student_Managment_SystemConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TblClass" Member="TblClasses">
+    <Type Name="TblClass">
+      <Column Name="Class_Id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Course_Id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Class_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="TblClass_TblStudent" Member="TblStudents" ThisKey="Class_Id" OtherKey="Class" Type="TblStudent" />
+      <Association Name="TblCourse_TblClass" Member="TblCourse" ThisKey="Course_Id" OtherKey="Course_Id" Type="TblCourse" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TblCourse" Member="TblCourses">
+    <Type Name="TblCourse">
+      <Column Name="Course_Id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Cname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="TblCourse_TblClass" Member="TblClasses" ThisKey="Course_Id" OtherKey="Course_Id" Type="TblClass" />
+      <Association Name="TblCourse_TblStudent" Member="TblStudents" ThisKey="Course_Id" OtherKey="Course" Type="TblStudent" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TblStudent" Member="TblStudents">
+    <Type Name="TblStudent">
+      <Column Name="EnRollNo" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RollNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Class" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Course" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DOB" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="TblClass_TblStudent" Member="TblClass" ThisKey="Class" OtherKey="Class_Id" Type="TblClass" IsForeignKey="true" />
+      <Association Name="TblCourse_TblStudent" Member="TblCourse" ThisKey="Course" OtherKey="Course_Id" Type="TblCourse" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
